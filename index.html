@@ -3,195 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nabin's Quiz Platform</title>
+    <title>Quiz Game Website</title>
+    <!--Link CSS files-->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header class="header">
-        <a href="#" class="logo" id="logoLink">🎯 Nabin's Quiz</a>
-        <nav class="navbar">
-            <button class="nav-btn active" data-screen="dashboard">🏠 Home</button>
-            <button class="nav-btn" data-screen="history">📜 History</button>
-            <button class="nav-btn theme-toggle" id="themeToggle">🌙 Dark</button>
-        </nav>
-    </header>
+    <main class="main">
 
-    <!-- ===== DASHBOARD SCREEN ===== -->
-    <section class="screen active" id="dashboardScreen">
-        <div class="dashboard">
-            <div class="dashboard-hero">
-                <h1>Welcome to Nabin's Quiz!</h1>
-                <p>Test your knowledge across multiple topics. Earn points, unlock achievements and climb the leaderboard!</p>
-            </div>
+        <!-- Header section containing navbar and logo -->
+        <header class="header">
+            <a href="#" class="logo">Quiz</a>
 
-            <!-- Stats Bar -->
-            <div class="stats-bar">
-                <div class="stat-card">
-                    <span class="stat-icon">🏆</span>
-                    <div>
-                        <span class="stat-value" id="totalPoints">0</span>
-                        <span class="stat-label">Total Points</span>
+            <nav class="navbar">
+                <a href="#" class="active">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Another section for home content -->
+
+        <div class="container">
+            <section class="quiz-section">
+                <div class="quiz-box">
+                    <h1>Nabin's Quiz</h1>
+                    <div class="quiz-header">
+                        <span>Welcome to Quiz Game</span>
+                        <span class="header-score">Score: 0 / 5</span>
+                    </div>
+
+                    <h2 class="question-text"></h2>
+
+                    <div class="option-list">
+                     
+                    </div> 
+
+                    <div class="quiz-footer">
+                        <span class="question-total"></span>
+                        <button class="next-btn">Next</button>
                     </div>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-icon">✅</span>
-                    <div>
-                        <span class="stat-value" id="totalQuizzes">0</span>
-                        <span class="stat-label">Quizzes Taken</span>
+
+                <div class="result-box">
+                    <h2>Quiz Result!</h2>
+                    <div class="percentage-container">
+                        <div class="circular-progress">
+                            <span class="progress-value">0%</span>
+                        </div>
+                        <span class="score-text">Your Score 0 out of 5</span>
+                    </div>
+                    <div class="buttons">
+                        <button class="tryAgain-btn">Try Again</button>
+                        <button class="goHome-btn">Go To Home</button>
                     </div>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🎯</span>
-                    <div>
-                        <span class="stat-value" id="avgScore">0%</span>
-                        <span class="stat-label">Avg Score</span>
-                    </div>
+            </section>
+            <section class="home">
+                <div class="home-content">
+                    <h1>Quiz Game</h1>
+                    <p>Welcome to the Nabin's Quiz game. After starting quiz you will get a quiz guide.</p>
+                    <button class="start-btn">Start Quiz</button>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🔥</span>
-                    <div>
-                        <span class="stat-value" id="bestStreak">0</span>
-                        <span class="stat-label">Best Streak</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Achievements -->
-            <div class="section-title">🏅 Achievements</div>
-            <div class="achievements-bar" id="achievementsBar">
-                <!-- Filled dynamically -->
-            </div>
-
-            <!-- Topic Selection -->
-            <div class="section-title">📚 Choose a Topic</div>
-            <div class="difficulty-row">
-                <label>Difficulty:</label>
-                <select id="difficultySelect">
-                    <option value="easy">Easy</option>
-                    <option value="medium" selected>Medium</option>
-                    <option value="hard">Hard</option>
-                </select>
-                <label>Questions:</label>
-                <select id="questionCountSelect">
-                    <option value="5">5</option>
-                    <option value="10" selected>10</option>
-                    <option value="15">15</option>
-                </select>
-            </div>
-            <div class="topics-grid" id="topicsGrid">
-                <!-- Filled dynamically -->
-            </div>
-
-            <!-- Leaderboard -->
-            <div class="section-title">🥇 Leaderboard</div>
-            <div class="leaderboard" id="leaderboard">
-                <!-- Filled dynamically -->
-            </div>
+            </section>
         </div>
-    </section>
+    </main>
 
-    <!-- ===== QUIZ SCREEN ===== -->
-    <section class="screen" id="quizScreen">
-        <div class="quiz-container">
-            <div class="quiz-top-bar">
-                <button class="btn-ghost" id="quitQuizBtn">✕ Quit</button>
-                <div class="quiz-meta">
-                    <span id="quizTopicLabel">Topic</span>
-                    <span class="badge" id="quizDifficultyBadge">Medium</span>
-                </div>
-                <div class="timer-wrap">
-                    <span class="timer-icon">⏱</span>
-                    <span id="timerDisplay">30</span>s
-                </div>
-            </div>
+    <!-- Division for Quiz guide popup-->
+    <div class="popup-info">
+        <h2>Quiz Guide</h2>
+        <span class="info">1. You cannot skip any questions.</span>
+        <span class="info">2. Once attempt any question, you cannot go to previous question.</span>
+        <span class="info">3. After one answer is selected, other option will be disabled.</span>
+        <span class="info">4. You will be given total 5 questions.</span>
+        <span class="info">5. Concentrate on your Quiz, Don't try to cheat.</span>
 
-            <div class="progress-wrap">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <span id="progressLabel">1 / 10</span>
-            </div>
 
-            <div class="score-streak-bar">
-                <span>Score: <strong id="liveScore">0</strong></span>
-                <span>Streak: <strong id="liveStreak">0</strong> 🔥</span>
-                <span>Points: <strong id="livePoints">0</strong></span>
-            </div>
-
-            <div class="question-card">
-                <h2 class="question-text" id="questionText">Loading question...</h2>
-                <div class="options-grid" id="optionsGrid">
-                    <!-- Filled dynamically -->
-                </div>
-            </div>
-
-            <div class="quiz-controls">
-                <button class="btn-primary" id="nextBtn" style="display:none;">Next →</button>
-            </div>
+        <!--Buttons for starting quiz  -->
+        <div class="btn-group">
+            <button class="info-btn exit-btn">Exit Quiz</button>
+            <a href="#" class="info-btn continue-btn">Continue</a>
         </div>
-    </section>
+    </div>
 
-    <!-- ===== RESULTS SCREEN ===== -->
-    <section class="screen" id="resultsScreen">
-        <div class="results-container">
-            <h2 class="results-title" id="resultsTitle">Quiz Complete! 🎉</h2>
-
-            <div class="results-circle-wrap">
-                <div class="circular-progress" id="circularProgress">
-                    <span class="progress-value" id="progressValue">0%</span>
-                </div>
-                <p class="score-text" id="scoreText">You scored 0 out of 10</p>
-            </div>
-
-            <div class="results-stats">
-                <div class="result-stat"><span>⏱ Time Taken</span><strong id="timeTaken">0s</strong></div>
-                <div class="result-stat"><span>⭐ Points Earned</span><strong id="pointsEarned">0</strong></div>
-                <div class="result-stat"><span>🔥 Best Streak</span><strong id="resultStreak">0</strong></div>
-                <div class="result-stat"><span>📊 Difficulty</span><strong id="resultDifficulty">Medium</strong></div>
-            </div>
-
-            <!-- New Achievements -->
-            <div id="newAchievements" class="new-achievements" style="display:none;">
-                <div class="section-title">🏅 New Achievements Unlocked!</div>
-                <div id="newAchievementsList" class="achievements-bar"></div>
-            </div>
-
-            <!-- Question Breakdown -->
-            <div class="section-title">📋 Question Breakdown</div>
-            <div class="breakdown-list" id="breakdownList"></div>
-
-            <div class="results-buttons">
-                <button class="btn-secondary" id="goHomeBtn">🏠 Home</button>
-                <button class="btn-primary" id="playAgainBtn">🔄 Play Again</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== HISTORY SCREEN ===== -->
-    <section class="screen" id="historyScreen">
-        <div class="history-container">
-            <h2>📜 Quiz History</h2>
-            <div class="history-filters">
-                <select id="historyTopicFilter">
-                    <option value="all">All Topics</option>
-                </select>
-                <button class="btn-danger" id="clearHistoryBtn">🗑 Clear History</button>
-            </div>
-            <div id="historyList" class="history-list">
-                <!-- Filled dynamically -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== SCRIPTS ===== -->
-    <script src="questions.js"></script>
+    <!--Link Javascript files-->
     <script src="script.js"></script>
+    <script src="questions.js"></script>3
 
     <footer class="footer">
-        <p>&copy; 2026 Nabin's Quiz Platform</p>
+        <div class="footer-content">
+            <p>&copy; 2023 Nabin's Quiz</p>
+            <ul class="social-icons">
+                <li><a href="#" class="icon-link">Facebook</a></li>
+                <li><a href="#" class="icon-link">Twitter</a></li>
+                <li><a href="#" class="icon-link">Instagram</a></li>
+            </ul>
+        </div>
     </footer>
-
+    
 </body>
 </html>
